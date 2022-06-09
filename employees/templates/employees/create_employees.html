@@ -1,0 +1,46 @@
+{% extends 'job/base.html' %} <!-- привязка ранее созданного шаблона -->
+
+{% block content %}
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            <h2>Новый сотрудник</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="employees_Models_LastName">Фамилия</label>
+                    <input type="text" name="employees_Models_LastName"
+                           class="form-control" id="employees_Models_LastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="employees_Models_FirstName">Имя</label>
+                    <input type="text" name="employees_Models_FirstName"
+                           class="form-control" id="employees_Models_FirstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="employees_Models_MidleName">Отчество</label>
+                    <input type="text" name="employees_Models_MidleName"
+                           class="form-control" id="employees_Models_MidleName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="employees_Models_age">Возраст</label>
+                    <textarea name="employees_Models_age" class="form-control" id="employees_Models_age" ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+
+
+{% endblock %}

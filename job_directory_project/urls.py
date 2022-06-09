@@ -14,15 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from job import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
 
+    path('currentjob/', views.currentjob, name='current_job'),  # отображение всех созданых должностей
     path('createjobtitle/', views.createjobtitle, name='create_jobtitle'),  # добавить должность
-    path('createemplayees/', views.createemplayees, name='create_eemplayees')  # добавить сотрудника
-
+    path('viewjob/<int:job_pk>', views.viewjob, name='viewjob'),  # <int:job_pk>/ - в адрес автомат-ки подставляет значение
+    path('deletejob/<int:job_pk>', views.deletejob, name='deletejob'),
+    path('employees/', include('employees.urls'), name="employees_click")
 
 ]

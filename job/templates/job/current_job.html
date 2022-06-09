@@ -1,0 +1,70 @@
+{% extends 'job/base.html' %} <!-- привязка ранее созданного шаблона -->
+
+{% block content %}
+
+
+
+<!--<ul>-->
+<!--    {% for 1todo in todos %}-->
+
+<!--    <li>-->
+<!--        <a href="{% url 'viewtodo' 1todo.id %}">  &lt;!&ndash; клибальная запись с параметром 1todo.id &ndash;&gt;-->
+<!--            {% if 1todo.important %} <b> {% endif %}&lt;!&ndash; если задача с пометкой важно, то ставим тэг <b> &ndash;&gt;-->
+<!--            {{ 1todo.title }}-->
+<!--            {% if 1todo.important %} </b> {% endif %}&lt;!&ndash; если задача с пометкой важно, то ставим тэг </>b> &ndash;&gt;-->
+<!--            {% if 1todo.memo %} - {{ 1todo.memo }} {% endif %} &lt;!&ndash; проверяем есть ли описание, если есть до добавляем &ndash;&gt;-->
+<!--        </a>-->
+<!--    </li>-->
+
+<!--    {% endfor %}  &lt;!&ndash; завершаем команду цикла &ndash;&gt;-->
+<!--</ul>-->
+
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            {% if currentjobs %}
+                <h1>Доступные должности</h1>
+                всего({{ currentjobs.count }})
+            {% else %}
+                           <h1>Доступные должности</h1>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+        {% if currentjobs %}
+            <div class="list-group">
+                {% for currentjob in currentjobs %}
+                    <!-- клибальная запись с параметром 1todo.id -->
+                    <!-- если задача с пометкой важно, то ставим item-danger -->
+                    <!-- проверяем есть ли описание, если есть до добавляем -->
+                    <a href="{% url 'viewjob' currentjob.id %}"
+                       class="list-group-item list-group-item-action">
+                        <b>{{ currentjob.job_title }}</b>
+                        {{ currentjob.job_category }}
+                    </a>
+                {% endfor %} <!-- завершаем команду цикла -->
+            </div>
+        {% else %}
+            <div class="text-center">
+                <h2>Похоже, у Вас нет должностей!</h2>
+            <br>
+            <a role="button" class="btn btn-primary" href="{% url 'create_jobtitle' %}">Новая должность</a>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
