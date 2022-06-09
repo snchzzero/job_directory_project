@@ -17,17 +17,14 @@
         {% if currentemployees %}
             <div class="list-group">
                 {% for currentemployee in currentemployees %}
-                    <!-- клибальная запись с параметром 1todo.id -->
-                    <!-- если задача с пометкой важно, то ставим item-danger -->
-                    <!-- проверяем есть ли описание, если есть до добавляем -->
                     <a href="{% url 'employees:view_employees' currentemployee.id %}"
                        class="list-group-item list-group-item-action">
                         <b> {{ currentemployee.employees_Models_LastName }}
                             {{ currentemployee.employees_Models_FirstName }}
                             {{ currentemployee.employees_Models_MidleName }}
                         </b>
-                        {{ currentemployee.employees_Models_age }}
-                        {{ currentemployee.employees_Models_job }}
+                        <i>{{ currentemployee.employees_Models_age }} лет</i>
+                        <u>{{ currentemployee.employees_Models_job }}</u>
                     </a>
                 {% endfor %} <!-- завершаем команду цикла -->
             </div>
