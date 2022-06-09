@@ -24,7 +24,7 @@ def createjobtitle(request):
 
 def currentjob(request):
     # пользователь видит все записи созданные всеми пользователями
-    currentjobs = Job.objects.all()
+    currentjobs = Job.objects.all().order_by('job_title')
     return render(request, 'job/current_job.html', {'currentjobs': currentjobs})
 
 def viewjob(request, job_pk):

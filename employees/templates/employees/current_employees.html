@@ -1,2 +1,45 @@
-{% extends 'job/base.html' %}
-Список доступных сотрудников
+{% extends 'job/base.html' %} <!-- привязка ранее созданного шаблона -->
+
+{% block content %}
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            {% if currentemployees %}
+                <h1>Доступные сотрудники</h1>
+                всего({{ currentemployees.count }})
+            {% else %}
+                           <h1>Доступные сотрудники</h1>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+        {% if currentemployees %}
+            <div class="list-group">
+                {% for currentemployee in currentemployees %}
+                    <!-- клибальная запись с параметром 1todo.id -->
+                    <!-- если задача с пометкой важно, то ставим item-danger -->
+                    <!-- проверяем есть ли описание, если есть до добавляем -->
+                    <a href="{% url 'employees:view_employees' currentemployee.id %}"
+                       class="list-group-item list-group-item-action">
+                        <b> {{ currentemployee.employees_Models_LastName }}
+                            {{ currentemployee.employees_Models_FirstName }}
+                            {{ currentemployee.employees_Models_MidleName }}
+                        </b>
+                        {{ currentemployee.employees_Models_age }}
+                        {{ currentemployee.employees_Models_job }}
+                    </a>
+                {% endfor %} <!-- завершаем команду цикла -->
+            </div>
+        {% else %}
+            <div class="text-center">
+                <h2>Похоже, у Вас нет сотрудников!</h2>
+            <br>
+            <a role="button" class="btn btn-primary" href="{% url 'employees:create_employees' %}">Новый сотрудник</a>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+
+
+{% endblock %}
