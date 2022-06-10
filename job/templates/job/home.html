@@ -1,7 +1,9 @@
 {% extends 'job/base.html' %} <!-- привязка ранее созданного шаблона -->
 
 {% block content %}
-<br>
+
+
+    <br>
     <br>
     <br>
     <br>
@@ -10,13 +12,28 @@
 <div class="row justify-content-center mt-5">
     <div class="col-md-7 text-center">
         <h1>Cправочник должностей — тестовое задание на вакансию «инженер-программист»</h1>
-            <p>Запиши в него все свои важные дела, чтобы не забыть.
-                <u>ToDoлист</u> позволит вам эффективно организовать свое рабочее время.
-                В него можно записать все: от <u>списка покупок</u> до <u>важных деловых встреч</u>.
-                Создай свой <b><i>ToDoлист</b></i> прямо сейчас, это не займет много времени.
-            </p>
-
+        <br>
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample3" role="button"
+           aria-expanded="false" aria-controls="collapseExample">о проекте</a>
+        <br>
+        <div class="collapse" id="collapseExample3">
+            <div class="container">
+            <br>
+                <li>Python 3.10</li>
+                <li>Django 4.0.5</li>
+                <li>Bootstrap 5.2.0</li>
+                <li>Изначально была создана по умолчанию в Django БД "db.sqlite3".
+                    Затем выполнена миграция БД на движке "postgresql_psycopg2" на хостинг heroku.com</li>
+                <li>добавлена автоматическая сортировка сотрудников и должностей по алфавиту</li>
+                <li>введено ограничение на ввод не буквенных символов в полях имя, фамилия, отчество</li>
+                <li>введено ограничение на ввод возраста от 14 до 99</li>
+            <br>
+            </div>
+        </div>
+        <br>
+        <hr>
     </div>
 </div>
+
 
 {% endblock %}
