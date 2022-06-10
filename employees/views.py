@@ -19,7 +19,7 @@ def createemployees(request):
         except ValueError:
             # если вводимое название задачи "title" больше 100 символов, то возникает ошибка и мы ее обрабатываем
             return render(request, 'employees/create_employees.html',
-                          {'form': employeesForm(), 'error': 'Bad data passed in. Try again'})
+                          {'form': employeesForm(), 'currentjobs':currentjobs, 'error': 'Bad data passed in. Try again'})
             # переданы неверные данные. попробуйте еще раз
 
 

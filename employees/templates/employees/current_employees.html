@@ -1,5 +1,5 @@
 {% extends 'job/base.html' %} <!-- привязка ранее созданного шаблона -->
-
+{% load static %} <!-- загружаем папку статик -->
 {% block content %}
 
     <div class="row justify-content-center mt-5">
@@ -23,6 +23,12 @@
                             {{ currentemployee.employees_Models_FirstName }}
                             {{ currentemployee.employees_Models_MidleName }}
                         </b>
+                            {% if currentemployee.employees_Models_gender == "муж." %}
+                        <font color="blue">&#9794</font>
+                            {% else %}
+                        <font color="pink">&#9792;</font>
+
+                            {% endif %}
                         <i>{{ currentemployee.employees_Models_age }} лет</i>
                         <u>{{ currentemployee.employees_Models_job }}</u>
                     </a>
@@ -37,6 +43,14 @@
         {% endif %}
         </div>
     </div>
+    <br>
+    <br>
 
+<!-- стрелка для прокрутки страницы вверх -->
+<div class = "fixed-bottom" style="margin-right: 16px; margin-bottom: 24px;">
+    <div class= "d-flex justify-content-end">
+        <a href = "#start"> <img src = "{% static 'employees/up-arrow-svgrepo-com.svg' %}" title="вверх" width="50" height="50"> </a>
+    </div>
+</div>
 
 {% endblock %}
