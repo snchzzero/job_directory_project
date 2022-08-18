@@ -1,16 +1,14 @@
-version: '3.7'
+FROM python:3.10.4
 
-services:
-#  db:
-#    image: postgres:10.1-alpine
-#    volumes:
-#      - postgres_data:/var/lib/postgresql/data/
-  web:
-    build: .
-    command: python /usr/src/job_directory_project/manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/usr/src/job_directory_project
-    ports:
-      - 8000:8000
-volumes:
-  postgres_data:
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /usr/src/job_directory_project
+
+COPY ./requirements.txt /usr/srs/requirements.txt
+RUN pip install -r /usr/srs/requirements.txt
+
+COPY . /usr/src/job_directory_project
+
+
+
